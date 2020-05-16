@@ -18,7 +18,7 @@ def scrape():
     
     mars = mongo.db.mars
     mars_data = mars_scrape.scrape()
-    mars.update({}, mars_data, upsert=True)
+    mars.replace_one({}, mars_data, upsert=True)
     
     return redirect("http://localhost:5000/", code=302)
 
